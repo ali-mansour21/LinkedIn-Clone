@@ -29,7 +29,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $start_date = $_POST['start_date'];
         $end_date = $_POST['end_date'];
         $query = $conn->prepare('insert into educations (user_id, degree, institution, start_date, end_date) values (?,?,?,?,?)');
-        $query->bind_param('sssss', $id, $degree, $institution, $start_date, $end_date);
+        $query->bind_param('issss', $id, $degree, $institution, $start_date, $end_date);
         if ($query->execute()) {
             $response['status'] = 200;
             $response['message'] = "Education added successfully";
