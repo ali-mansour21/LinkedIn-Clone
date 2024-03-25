@@ -24,7 +24,6 @@ const Education = () => {
         `http://localhost/linkedclone/server/education.php?user_id=${cookies.id}`
       )
       .then((response) => {
-        console.log(response.data);
         setEducationData(response.data);
       });
   }, []);

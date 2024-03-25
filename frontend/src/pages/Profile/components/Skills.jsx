@@ -23,12 +23,7 @@ const Skills = () => {
           <h2>Skills</h2>
           <div>
             <label htmlFor="skillName">Skill name</label>
-            <input
-              type="text"
-              name="skillName"
-              id="skillName"
-              placeholder="Skill name"
-            />
+            <select name="skillName" id="skillName"></select>
           </div>
           <div className="buttons">
             <button>Add</button>
