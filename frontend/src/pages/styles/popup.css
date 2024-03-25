@@ -32,9 +32,11 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.popup-content input[type="text"] {
+.popup-content input[type="text"],
+.popup-content input[type="date"] {
   width: 100%;
   padding: 8px;
+  margin-bottom: 10px;
 }
 .popup-content textarea {
   width: 100%;

@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/experince.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
+import PopUp from "../../components/PopUp";
 
 const Experince = () => {
+  const [showPopUp, setShowPopUp] = useState(false);
+  const togglePopup = () => {
+    setShowPopUp(!showPopUp);
+  };
   return (
     <>
       <div className="experince">
@@ -19,9 +24,54 @@ const Experince = () => {
               sunt dolorum inventore?
             </p>
           </div>
-          <FontAwesomeIcon icon={faPencil} />
+          <FontAwesomeIcon icon={faPencil} onClick={togglePopup} />
         </div>
       </div>
+      {showPopUp && (
+        <PopUp onClose={togglePopup}>
+          <h2>Expirence</h2>
+          <div>
+            <label htmlFor="companyName">Company name</label>
+            <input
+              name="companyName"
+              id="companyName"
+              type="text"
+              placeholder="Company name"
+            />
+          </div>
+          <div>
+            <label htmlFor="startDate">Start Date</label>
+            <input
+              type="date"
+              name="startDate"
+              id="startDate"
+              placeholder="start date"
+            />
+          </div>
+          <div>
+            <label htmlFor="endDate">End Date</label>
+            <input
+              type="date"
+              name="endDate"
+              id="endDate"
+              placeholder="end date"
+            />
+          </div>
+          <div>
+            <label htmlFor="description"> Description</label>
+            <textarea
+              name="description"
+              id="description"
+              cols="30"
+              placeholder="enter a description"
+              rows="10"
+            ></textarea>
+          </div>
+          <div className="buttons">
+            <button>Add</button>
+          </div>
+        </PopUp>
+      )}
     </>
   );
 };
