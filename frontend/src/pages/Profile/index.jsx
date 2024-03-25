@@ -18,9 +18,18 @@ const Index = () => {
   const [cookies] = useCookies(["id", "type"]);
 
   const [userId, setUserId] = useState();
+  const [companyData, setCompanyData] = useState();
   const [userType, setUserType] = useState();
   const [userData, setUserData] = useState(null);
-
+  const getCompany = () => {
+    axios
+      .get(
+        `http://localhost/linkedclone/server/createCompany.php?user_id=${cookies.id}`
+      )
+      .then((res) => {
+        setCompanyData(res.data.data);
+      });
+  };
   useEffect(() => {
     setUserId(cookies.id);
     setUserType(cookies.type);
@@ -34,6 +43,7 @@ const Index = () => {
       .catch((err) => {
         console.log(err);
       });
+    getCompany();
   }, [cookies.id, cookies.type, userData]);
   return (
     <>

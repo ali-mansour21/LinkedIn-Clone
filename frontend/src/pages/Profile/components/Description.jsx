@@ -1,14 +1,35 @@
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/description.css";
+import { useCookies } from "react-cookie";
 import PopUp from "../../components/PopUp";
+import axios from "axios";
 
 const Description = () => {
+  const [cookies] = useCookies(["id", "type"]);
+  const [companyData, setCompanyData] = useState();
+  const [newCompanyData, setNewCompanyData] = useState({
+    name: "",
+    description: "",
+  });
   const [showPopUp, setShowPopUp] = useState(false);
   const togglePopup = () => {
     setShowPopUp(!showPopUp);
   };
+  const getCompany = () => {
+    axios
+      .get(
+        `http://localhost/linkedclone/server/createCompany.php?user_id=${cookies.id}`
+      )
+      .then((res) => {
+        console.log(res.data.data);
+        setCompanyData(res.data.data);
+      });
+  };
+  useEffect(() => {
+    getCompany();
+  }, []);
   return (
     <>
       <div className="descritpion">
@@ -16,34 +37,67 @@ const Description = () => {
           <h2>Description</h2>
           <FontAwesomeIcon onClick={togglePopup} icon={faPencil} />
         </div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-          aspernatur consequatur corporis delectus doloremque dolorum eos
-          expedita facilis fuga harum impedit ipsa ipsam itaque laudantium
-          maiores molestiae nobis nihil nulla quae quasi quos repellendus
-          repudiandae saepe sequi sint soluta tempora tenetur ullam unde ut
-          voluptates voluptatum.
-        </p>
+        <p>{companyData?.Name}</p>
+        <p>{companyData?.Description}</p>
       </div>
       {showPopUp && (
         <PopUp onClose={togglePopup}>
-          {/* Content to be rendered inside the popup */}
-          <h2>Edit Description</h2>
+          <h2>Add Name & Description</h2>
+          <div>
+            <label htmlFor="name">Company Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              onChange={(e) => {
+                setNewCompanyData({
+                  ...newCompanyData,
+                  name: e.target.value,
+                });
+              }}
+              placeholder="name"
+            />
+          </div>
           <div>
             <textarea
               name="description"
               id="description"
               cols="30"
+              onChange={(e) => {
+                setNewCompanyData({
+                  ...newCompanyData,
+                  description: e.target.value,
+                });
+              }}
               placeholder="enter a description"
               rows="10"
             ></textarea>
           </div>
           <div className="buttons">
-            <button>Edit</button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                const { name, description } = newCompanyData;
+                const companyFormData = new FormData();
+                companyFormData.append("name", name);
+                companyFormData.append("descritpion", description);
+                companyFormData.append("user_id", cookies.id);
+                axios
+                  .post(
+                    "http://localhost/linkedclone/server/createCompany.php",
+                    companyFormData
+                  )
+                  .then((res) => {
+                    getCompany();
+                    togglePopup();
+                  });
+              }}
+            >
+              Add
+            </button>
           </div>
         </PopUp>
       )}
-      
     </>
   );
 };

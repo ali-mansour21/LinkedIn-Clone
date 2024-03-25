@@ -25,7 +25,6 @@ const Experince = () => {
         `http://localhost/linkedclone/server/experience.php?user_id=${cookies.id}`
       )
       .then((res) => {
-        console.log(res.data);
         setExperienceData(res.data);
       });
   };
@@ -127,7 +126,6 @@ const Experince = () => {
                     newData
                   )
                   .then((res) => {
-                    console.log(res);
                     getData();
                     togglePopup();
                   });

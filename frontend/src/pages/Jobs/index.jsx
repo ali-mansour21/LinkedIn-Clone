@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import Header from "../Main/components/Header.jsx";
 import Job from "./components/Job.jsx";
+import { useCookies } from "react-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBookmark,
@@ -11,12 +12,23 @@ import {
   faNoteSticky,
   faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 import PopUp from "../components/PopUp.jsx";
 const Index = () => {
   const [showPopUp, setShowPopUp] = useState(false);
+  const [cookies] = useCookies(["id", "type"]);
+  const [allJobs, setAllJobs] = useState();
+  const [newJob, setNewJob] = useState();
   const togglePopup = () => {
     setShowPopUp(!showPopUp);
   };
+  useEffect(() => {
+    axios
+      .get("http://localhost/linkedclone/server/jobposts.php")
+      .then((res) => {
+        console.log(res.data);
+      });
+  }, []);
   return (
     <>
       <div>
@@ -55,12 +67,16 @@ const Index = () => {
                 </li>
               </ul>
             </div>
-            <div className="add-job">
-              <button onClick={togglePopup}>
-                <FontAwesomeIcon icon={faPenToSquare} />
-                <span>Post a free job</span>
-              </button>
-            </div>
+            {cookies.type === 1 ? (
+              <div className="add-job">
+                <button onClick={togglePopup}>
+                  <FontAwesomeIcon icon={faPenToSquare} />
+                  <span>Post a free job</span>
+                </button>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
           <div className="column-2">
             <Job />

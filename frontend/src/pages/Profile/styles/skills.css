@@ -4,6 +4,19 @@
   padding: 10px;
   border-radius: 15px;
 }
+.skills .add {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.skills .add svg {
+  width: 24px;
+  height: 24px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.skills .add svg:hover {
+  cursor: pointer;
+}
 .skills h2 {
   margin-bottom: 15px;
 }
@@ -18,6 +31,6 @@
   height: 24px;
   color: rgba(0, 0, 0, 0.5);
 }
-.skills .box svg:hover{
+.skills .box svg:hover {
   cursor: pointer;
 }
