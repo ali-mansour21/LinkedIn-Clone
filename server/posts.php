@@ -91,7 +91,7 @@ function getAllUserInfo($conn)
         FROM 
             users
         JOIN 
-            profiles ON users.UserID = profiles.UserID
+            profiles 
         JOIN 
             posts ON users.UserID = posts.user_id');
     $query->execute();

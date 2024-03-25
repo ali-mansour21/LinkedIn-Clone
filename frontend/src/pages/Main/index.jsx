@@ -2,6 +2,8 @@ import Header from "./components/Header.jsx";
 import emptyProfile from "../../assets/empty-image.jpeg";
 import cover from "../../assets/cover.jpeg";
 import Post from "./components/Post.jsx";
+import { useCookies } from "react-cookie";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowRight,
@@ -13,7 +15,25 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import "./index.css";
+import { useEffect, useState } from "react";
 const Index = () => {
+  const [cookies, setCookies] = useCookies(["id", "type"]);
+  const [userData, setUserData] = useState();
+  const [posts, setPosts] = useState();
+  useEffect(() => {
+    axios
+      .get("http://localhost/linkedclone/server/posts.php")
+      .then((response) => {
+        setPosts(response.data);
+      });
+    axios
+      .get(
+        `http://localhost/linkedclone/server/userProfile.php?user_id=${cookies.id}`
+      )
+      .then((response) => {
+        setUserData(response.data[0]);
+      });
+  }, []);
   return (
     <>
       <Header />
@@ -21,11 +41,23 @@ const Index = () => {
         <div className="column-1">
           <div className="card">
             <div className="cover">
-              <img className="coverImg" srcSet={cover} alt="" />
-              <img className="profileImg" srcSet={emptyProfile} alt="" />
+              <img
+                className="coverImg"
+                srcSet={userData?.cover_image ? userData?.cover_image : cover}
+                alt=""
+              />
+              <img
+                className="profileImg"
+                srcSet={
+                  userData?.profile_image
+                    ? userData?.profile_image
+                    : emptyProfile
+                }
+                alt=""
+              />
             </div>
             <div className="profile-info">
-              <h2>Welcome , Name</h2>
+              <h2>Welcome , {userData?.Username}</h2>
               <h4>Add a photo</h4>
             </div>
             <hr />
@@ -110,7 +142,14 @@ const Index = () => {
         <div className="column-2">
           <div className="box-1">
             <div className="img">
-              <img srcSet={emptyProfile} alt="" />
+              <img
+                srcSet={
+                  userData?.profile_image
+                    ? userData?.profile_image
+                    : emptyProfile
+                }
+                alt=""
+              />
               <input
                 type="text"
                 placeholder="Start a post, try writing with AI "
@@ -134,7 +173,14 @@ const Index = () => {
             </div>
           </div>
           <div className="seperate"></div>
-          <Post />
+          {posts?.map((post, i) => (
+            <Post
+              name={post?.user_name}
+              bio={post?.profile_bio}
+              post={post}
+              key={i}
+            />
+          ))}
         </div>
         <div className="column-3">
           <div className="feedCard">

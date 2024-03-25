@@ -34,7 +34,7 @@ const Index = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [cookies.id, cookies.type]);
+  }, [cookies.id, cookies.type, userData]);
   return (
     <>
       <Header />
@@ -79,12 +79,9 @@ const Index = () => {
           ) : (
             <div>
               <Description />
-              <Jobs />
+              <Activity data={userData} />
             </div>
           )}
-        </div>
-        <div className="column-2">
-          <h2>section 2</h2>
         </div>
       </div>
     </>
