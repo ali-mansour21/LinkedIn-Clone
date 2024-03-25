@@ -13,7 +13,7 @@ import emptyProfile from "../../../assets/empty-image.jpeg";
 import cover from "../../../assets/cover.jpeg";
 import "../styles/post.css";
 
-const Post = () => {
+const Post = ({ post, name, bio }) => {
   return (
     <>
       <div className="post">
@@ -21,8 +21,8 @@ const Post = () => {
           <div>
             <img srcSet={emptyProfile} alt="" />
             <div className="post-info">
-              <h4>Name</h4>
-              <h5>Bio</h5>
+              <h4>{name}</h4>
+              <h5>{bio}</h5>
               <h5>Time</h5>
             </div>
           </div>
@@ -32,11 +32,8 @@ const Post = () => {
           </div>
         </div>
         <div className="second-section">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe
-            doloribus ipsum maxime
-          </p>
-          <img srcSet={cover} alt="" />
+          <p>{post?.post_description}</p>
+          <img srcSet="../frontend/src/assets/6601bbeca07cf_OIP.jpeg" alt="" />
         </div>
         <div className="third-section">
           <div className="likes">

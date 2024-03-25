@@ -33,9 +33,15 @@ switch ($_SERVER['REQUEST_METHOD']) {
 function getUserInfo($conn, $user_id)
 {
     $query = $conn->prepare('SELECT 
+            users.UserID,
             users.Username,
-            profiles.*,
-            posts.*
+            profiles.Bio,
+            profiles.profile_image,
+            profiles.cover_image,
+            profiles.summary,
+            posts.post_id,
+            posts.description,
+            posts.post_image
         FROM 
             users
         JOIN 
@@ -50,13 +56,22 @@ function getUserInfo($conn, $user_id)
     $response = array();
     $result = $query->get_result();
     while ($row = $result->fetch_assoc()) {
-        $response[] = array(
-            'user_id' => $row['user_id'],
-            'user_name' => $row['Username'],
-            'profile_bio' => $row['Bio'],
-            'profile_image' => $row['profile_image'],
-            'cover_image' => $row['cover_image'],
-            'summary' => $row['summary'],
+        // Check if the user is already in the response array
+        if (!isset($response['user'])) {
+            // If not, initialize a new entry for the user
+            $response['user'] = array(
+                'user_id' => $row['UserID'],
+                'user_name' => $row['Username'],
+                'profile_bio' => $row['Bio'],
+                'profile_image' => $row['profile_image'],
+                'cover_image' => $row['cover_image'],
+                'summary' => $row['summary'],
+                'posts' => array()
+            );
+        }
+
+        // Add the post to the user's posts array
+        $response['user']['posts'][] = array(
             'post_id' => $row['post_id'],
             'post_description' => $row['description'],
             'post_image' => $row['post_image']
@@ -65,6 +80,7 @@ function getUserInfo($conn, $user_id)
 
     return $response;
 }
+
 function getAllUserInfo($conn)
 {
     $query = $conn->prepare('SELECT 

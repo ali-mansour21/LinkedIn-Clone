@@ -12,46 +12,66 @@ import Skills from "./components/Skills";
 import { useCookies } from "react-cookie";
 import Jobs from "./components/Jobs";
 import Description from "./components/Description";
+import axios from "axios";
 
 const Index = () => {
-  const [cookies] = useCookies(["token"]);
-  const token = cookies.token;
-  const [userId, setUserId] = useState(null);
-  const [userType, setUserType] = useState(null);
+  const [cookies] = useCookies(["id", "type"]);
+
+  const [userId, setUserId] = useState();
+  const [userType, setUserType] = useState();
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    if (token) {
-      const tokenParts = token.split(".");
-      if (tokenParts.length === 3) {
-        const payload = JSON.parse(atob(tokenParts[1]));
-        setUserId(payload.user_id);
-        setUserType(payload.user_type);
-      } else {
-        console.error("Invalid JWT token format");
-      }
-    }
-  }, [token]);
+    setUserId(cookies.id);
+    setUserType(cookies.type);
+    axios
+      .get(
+        `http://localhost/linkedclone/server/posts.php?user_id=${cookies.id}`
+      )
+      .then((response) => {
+        setUserData(response.data.user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [cookies.id, cookies.type]);
   return (
     <>
       <Header />
       <div className="main-section">
         <div className="column-1">
-          <div className="profile">
-            <div className="profile-image">
-              <img className="cover" srcSet={cover} alt="" />
-              <img className="profile" srcSet={profileImage} alt="" />
-              <FontAwesomeIcon className="pencil" icon={faPencil} />
+          {userData ? (
+            <div className="profile">
+              <div className="profile-image">
+                <img
+                  className="cover"
+                  srcSet={userData.cover_image ? userData.cover_image : cover}
+                  alt=""
+                />
+                <img
+                  className="profile"
+                  srcSet={
+                    userData.profile_image
+                      ? userData.profile_image
+                      : profileImage
+                  }
+                  alt=""
+                />
+                <FontAwesomeIcon className="pencil" icon={faPencil} />
+              </div>
+              <div className="profile-info">
+                <h2>{userData.user_name}</h2>
+                <p>{userData.profile_bio}</p>
+                <p className="location">location</p>
+                <p className="connections">400 connection</p>
+              </div>
             </div>
-            <div className="profile-info">
-              <h2>Name</h2>
-              <p>title</p>
-              <p className="location">location</p>
-              <p className="connections">400 connection</p>
-            </div>
-          </div>
+          ) : (
+            ""
+          )}
           {userType === 0 ? (
             <div>
-              <Activity />
+              <Activity data={userData} />
               <Education />
               <Experince />
               <Skills />

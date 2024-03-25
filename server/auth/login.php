@@ -18,6 +18,8 @@ if ($result->num_rows > 0) {
         $token = generateJWT($row['UserID'], $row['UserType'], $secretKey, $algorithm);
         $response['status'] = 200;
         $response['token'] = $token;
+        $response['user_id'] = $row['UserID'];
+        $response['user_type'] = $row['UserType'];
         $response['message'] = "Login successful";
     } else {
         $response['status'] = 500;

@@ -40,6 +40,8 @@ const Signup = () => {
                   .then((response) => {
                     if (response.data.status === 200) {
                       Cookie.set("token", response.data.token);
+                      Cookie.set("id", response.data.user_id);
+                      Cookie.set("type", response.data.user_type);
                       navigate("/home");
                     }
                   });
