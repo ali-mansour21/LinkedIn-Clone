@@ -1,0 +1,54 @@
+.main-container {
+  width: 100%;
+  padding-left: 240px;
+  padding-right: 240px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+.main-container .column-1 {
+  flex: 0 0 250px;
+  align-self: flex-start;
+}
+.main-container .column-1 .box {
+  padding-top: 15px;
+}
+.main-container .column-1 .box ul {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+  gap: 30px;
+}
+.main-container .column-1 .box ul li {
+  color: rgba(0, 0, 0, 0.7);
+}
+.main-container .column-1 .add-job {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.main-container .column-1 .add-job button {
+  border: 1px solid #0a66c2;
+  color: #0a66c2;
+  background-color: transparent;
+  padding: 12px 60px;
+  border-radius: 20px;
+  display: flex;
+  gap: 5px;
+  transition: all 0.2s ease-in-out;
+  font-size: 15px;
+}
+.main-container .column-1 .add-job button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.main-container .column-2 {
+  flex: 1;
+  align-self: flex-start;
+}
+.main-container .column-3 {
+  flex: 0 0 300px;
+  align-self: flex-start;
+}

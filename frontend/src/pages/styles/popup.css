@@ -29,9 +29,13 @@
 }
 .popup-content label {
   display: block;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
-
+.popup-content input[type="text"] {
+  width: 100%;
+  padding: 8px;
+}
 .popup-content textarea {
   width: 100%;
   padding: 8px;
@@ -40,18 +44,18 @@
   resize: none;
   outline: none;
 }
-.buttons{
-    display: flex;
-    justify-content: flex-end;
+.buttons {
+  display: flex;
+  justify-content: flex-end;
 }
-.buttons button{
-    padding: 7px 30px;
-    border: none;
-    background-color: #0a66c2;
-    color: #fff;
-    border-radius: 15px;
-    font-size: 18px;
+.buttons button {
+  padding: 7px 30px;
+  border: none;
+  background-color: #0a66c2;
+  color: #fff;
+  border-radius: 15px;
+  font-size: 18px;
 }
-.buttons button:hover{
-    cursor: pointer;
+.buttons button:hover {
+  cursor: pointer;
 }

@@ -4,6 +4,7 @@ import Login from "./Auth/Login";
 import Signup from "./Auth/Signup";
 import MainPage from "./pages/Main";
 import ProfilePage from "./pages/Profile";
+import JobPage from "./pages/Jobs";
 function App() {
   return (
     <BrowserRouter>
@@ -12,6 +13,7 @@ function App() {
         <Route path="/signup" Component={Signup} />
         <Route path="/home" Component={MainPage} />
         <Route path="/profile" Component={ProfilePage} />
+        <Route path="/jobs" Component={JobPage} />
       </Routes>
     </BrowserRouter>
   );
