@@ -1,0 +1,20 @@
+.skills {
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 15px;
+}
+.skills h2 {
+  margin-bottom: 15px;
+}
+.skills .box {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+.skills .box svg {
+  width: 24px;
+  height: 24px;
+  color: rgba(0, 0, 0, 0.5);
+}

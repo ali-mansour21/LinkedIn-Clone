@@ -1,0 +1,261 @@
+.main-container {
+  width: 100%;
+  padding-left: 240px;
+  padding-right: 240px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+.main-container .column-1 {
+  flex: 0 0 250px;
+  align-self: flex-start;
+}
+.main-container .column-1 .card {
+  background-color: #fff;
+  border-radius: 15px;
+}
+.main-container .column-1 .card .cover {
+  padding: 0;
+  position: relative;
+}
+.main-container .column-1 .card .cover .coverImg {
+  width: 100%;
+  height: 55px;
+  padding: 0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.main-container .column-1 .card .cover .profileImg {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.main-container .column-1 .card .profile-info {
+  margin-top: 20px;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.main-container .column-1 .card .profile-info h2 {
+  margin-bottom: 10px;
+}
+.main-container .column-1 .card .profile-info h2,
+.main-container .column-1 .card .profile-info h4 {
+  font-weight: normal;
+}
+.main-container .column-1 .card .stats,
+.main-container .column-1 .card .pro {
+  padding: 15px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+.main-container .column-1 .card .stats div {
+  display: flex;
+  justify-content: space-between;
+}
+.main-container .column-1 .card .stats div h5,
+.main-container .column-1 .card .pro h5,
+.main-container .column-1 .card .pro h4,
+.main-container .column-1 .card .items h5 {
+  font-weight: normal;
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.6);
+}
+.main-container .column-1 .card .items {
+  padding: 15px;
+  margin-top: 20px;
+}
+.main-container .column-1 .box {
+  margin-top: 20px;
+  border-radius: 15px;
+  padding: 15px;
+  background-color: #fff;
+}
+.main-container .column-1 .box h5 {
+  font-weight: normal;
+  margin-bottom: 7px;
+}
+.main-container .column-1 .box ul li {
+  font-size: 15px;
+  margin-bottom: 7px;
+  display: flex;
+  gap: 5px;
+}
+.main-container .column-1 .box .events h5 {
+  color: #0a66c2;
+}
+.main-container .column-1 .box .events div {
+  display: flex;
+  justify-content: space-between;
+}
+.main-container .column-1 .box .events div h5 {
+  color: #0a66c2;
+}
+.main-container .column-1 .box .discover {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+.main-container .column-1 .box .discover button {
+  margin-top: 7px;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+.main-container .column-1 .box:hover .discover,
+.main-container .column-1 .box:hover .discover button {
+  cursor: pointer;
+  background-color: rgb(238, 235, 235, 0.3);
+}
+.main-container .column-2 {
+  flex: 1;
+  align-self: flex-start;
+}
+.main-container .column-2 .box-1 {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 15px;
+  width: 100%;
+}
+.main-container .column-2 .box-1 .img {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.main-container .column-2 .box-1 .img input {
+  height: 48px;
+  width: 100%;
+  border-radius: 20px;
+  padding-left: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s ease-in-out;
+}
+.main-container .column-2 .box-1 .img input:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.main-container .column-2 .box-1 .img input:focus {
+  outline: none;
+}
+.main-container .column-2 .box-1 .img img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+.main-container .column-2 .box-1 .links {
+  margin-top: 18px;
+}
+.main-container .column-2 .box-1 .links ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.main-container .column-2 .box-1 .links ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 85px;
+  height: 48px;
+  gap: 5px;
+  color: rgba(0, 0, 0, 0.6);
+  transition: all 0.2s ease-in-out;
+}
+.main-container .column-2 .box-1 .links ul li:hover {
+  border-radius: 7px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.main-container .column-2 .box-1 .links ul li svg {
+  width: 18px;
+  height: 18px;
+}
+.main-container .column-2 .box-1 .links ul li .media {
+  color: #378fe9;
+}
+.main-container .column-2 .box-1 .links ul li .event {
+  color: #c37d16;
+}
+.main-container .column-2 .box-1 .links ul li .article {
+  color: #e06847;
+}
+.main-container .column-2 .seperate {
+  width: 100%;
+  margin-top: 20px;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.main-container .column-3 {
+  flex: 0 0 300px;
+  align-self: flex-start;
+}
+.main-container .column-3 .feedCard {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 15px;
+}
+.main-container .column-3 .feedCard .first-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-container .column-3 .feedCard .first-section h3{
+  font-weight: normal;
+}
+.main-container .column-3 .feedCard .second-section {
+  margin-top: 10px;
+}
+.main-container .column-3 .feedCard .second-section .box {
+  display: flex;
+  gap: 5px;
+  margin-top: 8px;
+}
+.main-container .column-3 .feedCard .second-section .box img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+.main-container .column-3 .feedCard .second-section .box p {
+  color: rgba(0, 0, 0, 0.5);
+}
+.main-container .column-3 .feedCard .second-section .box button {
+  display: flex;
+  gap: 5px;
+  margin-top: 3px;
+  padding: 10px 25px;
+  color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: transparent;
+  border-radius: 15px;
+  transition: all 0.2s ease-in-out;
+}
+.main-container .column-3 .feedCard .second-section .box button:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.6);
+}
+.main-container .column-3 .feedCard .second-section .recommendations {
+  margin-top: 10px;
+  padding: 10px;
+}
+.main-container .column-3 .feedCard .second-section .recommendations button {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  border: none;
+  padding: 5px;
+  color: rgba(0, 0, 0, 0.6);
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+.main-container .column-3 .feedCard .recommendations button:hover {
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+}

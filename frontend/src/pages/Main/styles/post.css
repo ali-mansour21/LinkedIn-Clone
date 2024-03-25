@@ -1,0 +1,84 @@
+ .post {
+  margin-top: 10px;
+  border-radius: 15px;
+  background-color: #fff;
+}
+ .post .first-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+ .post .first-section div {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+}
+ .post .first-section div img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+ .post .first-section .post-info {
+  display: flex;
+  flex-direction: column;
+  font-weight: normal;
+  align-items: center;
+  gap: 3px;
+}
+ .post .first-section .post-info h4,
+ .post .first-section .post-info h5 {
+  font-weight: normal;
+}
+ .post .first-section .buttons svg {
+  width: 16px;
+  height: 16px;
+  color: rgba(0, 0, 0, 0.3);
+}
+ .post .second-section p {
+  padding-left: 15px;
+  padding-bottom: 10px;
+}
+ .post .second-section img {
+  width: 100%;
+}
+ .post .third-section {
+  margin-top: 10px;
+}
+ .post .third-section .likes {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px;
+  align-items: center;
+}
+ .post .third-section .likes p {
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.6);
+}
+ .post .third-section .likes p span {
+  margin-right: 3px;
+}
+ .post .third-section .likes p span svg {
+  color: #0a66c2;
+}
+ .post .third-section .line {
+  width: 100%;
+  height: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+ .post .third-section .actions {
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+ .post .third-section .actions ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+ .post .third-section .actions ul li {
+  display: flex;
+  gap: 3px;
+  color: rgba(0, 0, 0, 0.5);
+}
