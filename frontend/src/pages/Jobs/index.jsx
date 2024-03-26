@@ -18,16 +18,22 @@ const Index = () => {
   const [showPopUp, setShowPopUp] = useState(false);
   const [cookies] = useCookies(["id", "type"]);
   const [allJobs, setAllJobs] = useState();
-  const [newJob, setNewJob] = useState();
+  const [newJob, setNewJob] = useState({
+    title: "",
+    description: "",
+  });
   const togglePopup = () => {
     setShowPopUp(!showPopUp);
   };
-  useEffect(() => {
+  const getAllJobs = () => {
     axios
       .get("http://localhost/linkedclone/server/jobposts.php")
       .then((res) => {
-        console.log(res.data);
+        setAllJobs(res.data);
       });
+  };
+  useEffect(() => {
+    getAllJobs();
   }, []);
   return (
     <>
@@ -79,7 +85,9 @@ const Index = () => {
             )}
           </div>
           <div className="column-2">
-            <Job />
+            {allJobs?.map((job, i) => {
+              return <Job key={i} job={job} />;
+            })}
           </div>
         </div>
       </div>
@@ -92,6 +100,9 @@ const Index = () => {
               type="text"
               name="title"
               id="title"
+              onChange={(e) => {
+                setNewJob({ ...newJob, title: e.target.value });
+              }}
               placeholder="Job title"
             />
           </div>
@@ -101,12 +112,35 @@ const Index = () => {
               name="description"
               id="description"
               cols="30"
+              onChange={(e) => {
+                setNewJob({ ...newJob, description: e.target.value });
+              }}
               placeholder="enter a description"
               rows="10"
             ></textarea>
           </div>
           <div className="buttons">
-            <button>Create</button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                const { title, description } = newJob;
+                const jobData = new FormData();
+                jobData.append("title", title);
+                jobData.append("description", description);
+                jobData.append("user_id", cookies.id);
+                axios
+                  .post(
+                    "http://localhost/linkedclone/server/jobposts.php",
+                    jobData
+                  )
+                  .then((res) => {
+                    getAllJobs();
+                    togglePopup();
+                  });
+              }}
+            >
+              Create
+            </button>
           </div>
         </PopUp>
       )}

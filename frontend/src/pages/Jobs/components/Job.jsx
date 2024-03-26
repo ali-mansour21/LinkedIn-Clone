@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../Main/styles/post.css";
 import emptyProfile from "../../../assets/empty-image.jpeg";
 import PopUp from "../../components/PopUp";
-const Job = () => {
+const Job = ({ job }) => {
   return (
     <>
       <div className="post">
@@ -10,17 +10,14 @@ const Job = () => {
           <div>
             <img srcSet={emptyProfile} alt="" />
             <div className="post-info">
-              <h4>Company Name</h4>
+              <h4>{job?.company_name}</h4>
               <h5>Bio</h5>
-              <h5>Time</h5>
+              <h5>{job?.job_date}</h5>
             </div>
           </div>
         </div>
         <div className="second-section">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe
-            doloribus ipsum maxime
-          </p>
+          <p>{job?.job_description}</p>
         </div>
         <div className="apply">
           <button>Apply Now</button>

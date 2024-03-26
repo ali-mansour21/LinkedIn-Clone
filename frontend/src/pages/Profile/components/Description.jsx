@@ -23,7 +23,6 @@ const Description = () => {
         `http://localhost/linkedclone/server/createCompany.php?user_id=${cookies.id}`
       )
       .then((res) => {
-        console.log(res.data.data);
         setCompanyData(res.data.data);
       });
   };
